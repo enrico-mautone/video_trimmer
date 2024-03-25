@@ -3,6 +3,7 @@ import ffmpeg
 from ffmpeg import Error as FFmpegError
 
 def trim_video(input_file, output_file, duration_minutes):
+    print(f"input file {input_file} {output_file} {duration_minutes}")
     try:
         duration_seconds = int(duration_minutes) * 60
         ffmpeg.input(input_file, ss=0).output(output_file, t=duration_seconds).run()
@@ -12,7 +13,7 @@ def trim_video(input_file, output_file, duration_minutes):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: python trim_video.py <input_file.mp4> <duration_in_minutes>")
+        print("Usage: python trim_video.py <input_file.mp4> <input_file.mp4> <duration_in_minutes>")
         sys.exit(1)
 
     input_file = sys.argv[1]
